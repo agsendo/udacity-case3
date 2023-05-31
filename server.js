@@ -31,45 +31,21 @@ function listening(){
 
 
 
-
-
-
 // GET route
-app.get('/', sendData);
+app.get('/get', sendData);
 function sendData (req, res) {
-    res.send('projectData');
+    res.send(projectData);
 };
 
-/*
-// POST an animal
-//const data = [];
-app.post('/animal', addAnimal);
 
-function addAnimal (req,res){
-    let data = req.body;
-    projectData["animalX"] = data.animal;
-    res.send(projectData);
-
-    /*working alternative
-    const animal = req.body.animal;
-    projectData.animal = animal;
-    console.log(projectData.animal);
-    //res.send('POST received'); // error - we should use json
-    res.json({ message: 'POST received' }); // will appear in the browser's console
-    */
-
-    /*working alternative
-    projectData.animal = req.body;
-    console.log('Received new animal: ', req.body);
-    //res.send('POST received'); // error - we should use json
-    res.json({ message: 'POST received' }); // will appear in the browser's console
-    */
-
-    /* working alternative
-    projectData = req.body;
-    console.log('Received new animal: ', projectData); // will appear in the text editor terminal
-    //res.send("POST received"); // error - we should use json
-    res.json({ message: 'POST received' }); // will appear in the browser's console
-    */
-/*};
-*/
+// POST route
+let entries = []; //for storing all the entries
+app.post('/post', addData);
+function addData (req, res) {
+    let entry { date, temp, content } = req.body;
+    let newEntry = { date, temp, content } = { date, temp, content };
+    entries.push(newEntry); //add the new entry to the array
+    console.log('Added entry: ', newEntry);
+    console.log('Array: ', entries);
+    res.json({ message: 'Entry received' });
+}

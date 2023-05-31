@@ -2,7 +2,6 @@
 const apiKey = '<c4118ac8f4fdbfee310a33ce3167101b>&units=imperial';
 
 
-
 /* Global Variables */
 
 // Create a new date instance dynamically with JS

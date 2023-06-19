@@ -10,18 +10,24 @@
     <body>
         <div class="holder headline"><h1>Weather Journal App</h1></div>
         <div id="app">
-            <div class="input-container">   
-                <div class="holder zip">
-                    <label for="zip">Enter Zipcode here</label>
-                    <input type="text" id="zip" placeholder="Enter zip code here">
-                </div>
-                <div class="holder feel">
-                    <label for="feelings">How are you feeling today?</label>
-                    <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-                </div>
-                <div class="button-container">
-                    <button id="generate" type="submit">Generate</button>
-                </div>
+            <div class="input-container">
+                <form name="submitEntry" onsubmit="return false">  
+                    <div class="holder zip">
+                        <label for="zip">Enter Zipcode (5 digits)</label>
+                        <input type="text" id="zip" name="zipCode" placeholder="Enter zip code here" required pattern="^[0-9]{5}$">
+                        <!-- <input type="text" id="zip" name="zipCode" placeholder="Enter zip code here" required minlength="5" maxlength="5"> -->
+                        <!-- <input type="number" id="zip" name="zipCode" placeholder="Enter zip code here" required min="01000" max="52999"> -->
+                        <!-- <input type="text" id="zip" placeholder="Enter zip code here" required minlength="5" maxlength="5"> -->
+                        <!-- <input type="number" id="zip" placeholder="Enter zip code here" required min="01000" max="52999"> -->
+                    </div>
+                    <div class="holder feel">
+                        <label for="feelings">How are you feeling today?</label>
+                        <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50" required></textarea>
+                    </div>
+                    <div class="button-container">
+                        <button id="generate" type="submit">Generate</button>
+                    </div>
+                </form>
             </div>
             <div class="entry-container">
                 <div class="holder entry">

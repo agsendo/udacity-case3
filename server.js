@@ -1,6 +1,10 @@
 /* Empty JS object to act as endpoint for all routes */
 let projectData = {};
 
+/* Array for storing all of the entries */
+let entries = [];
+
+
 /* Express to run server and routes */
 const express = require('express');
 
@@ -32,18 +36,18 @@ function listening(){
 
 
 // GET route
-app.get('/get', sendData);
+app.get('/getData', sendData);
 function sendData (req, res) {
     res.send(projectData);
 };
 
 
+
 // POST route
-let entries = []; //for storing all the entries
-app.post('/post', addData);
+app.post('/addData', addData);
 function addData (req, res) {
     let { date, temp, content } = req.body;
-    let newEntry = { date, temp, content } = { date, temp, content };
+    let newEntry = { date, temp, content };
     entries.push(newEntry); //add the new entry to the array
     console.log('Added entry: ', newEntry);
     console.log('Array: ', entries);

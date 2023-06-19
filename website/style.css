@@ -1,6 +1,9 @@
 body {
     /*background-color: #f23557; red*/
-    background-color: #157f1f;
+    /*background-color: #157f1f;*/
+    /*background-color: #fdfcdc; light yellow*/
+    /*background-color: #fed9b7;*/
+    background-color: #fbfbe9;
     font-family: 'Oswald', sans-serif;
     /*display: grid;
     grid-template-columns: (15vw, auto, 15vw);*/
@@ -22,10 +25,15 @@ body {
     /*grid-area: 2/1/2/1;*/
     /*min-height: 100%;*/    
     /*background-color: #f23557; red*/
-    background-color: #157f1f; /*dark green*/
+    /*background-color: #157f1f; dark green !!!!!!*/
+    /*background-color: #fdfcdc; light yellow*/
+    /*background-color: #fed9b7;*/
+    background-color: #fbfbe9;
     /*background-color: #07560f;*/
     /*background-color: #8ae093; light green*/
-    color: #f0d43a;
+    /*color: #f0d43a; yellow !!!!*/
+    /*color: #f07167; red/pink*/
+    color: #EC7A71;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     padding-bottom: 50px;
@@ -65,7 +73,8 @@ body {
 
 h1 {
     font-size: 2em;
-    color: #f0d43a;
+    /*color: #f0d43a;*/
+    color: #f13d31;
 }
 
 @media(min-width:601px) {
@@ -107,7 +116,8 @@ h1 {
     /*font-size: 2em;*/
     height: 60px;
     margin-top: -15px;
-    border-bottom: 4px #f0d43a solid;
+    /*border-bottom: 4px #f0d43a solid;*/
+    border-bottom: 4px #f07167 solid;
     text-align: center;
 }
 
@@ -135,7 +145,8 @@ input {
     /*background: #22b2da; blue
     background-color: #105C71; dark blue*/
     /*background-color: #047190; dark blue - good*/
-    background-color: #047290cd;
+    /*background-color: #047290cd; dark blue !!!!*/
+    background-color: #0081a7;
     color: #f0d43a;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
@@ -146,11 +157,17 @@ textarea {
     /*background-color: #22b2da; blue
     background-color: #105C71; dark blue*/
     /*background-color: #047190; dark blue - good*/
-    background-color: #047290cd;
+    /*background-color: #047290cd; dark blue !!!!*/
+    background-color: #0081a7;
     color: #f0d43a;
     width: 400px;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+}
+
+input:valid, textarea:valid {
+    /*background-color: #2caacdcd; !!!!*/
+    background-color: #00afb9;
 }
 
 button {

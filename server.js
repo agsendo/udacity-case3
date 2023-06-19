@@ -1,6 +1,9 @@
 /* Empty JS object to act as endpoint for all routes */
 let projectData = {};
 
+/* Counts added entries inside projectData object */
+let counter = 0;
+
 /* Array for storing all of the entries */
 let entries = [];
 
@@ -41,6 +44,16 @@ function sendData (req, res) {
     res.send(projectData);
 };
 
+app.get('/getRecent', sendRecent);
+function sendRecent (req, res) {
+    //let last = `entry${counter}`;
+    //let last = 'entry'+(counter-1);
+    //console.log('Get request - last entry: ', projectData.last.temp);
+    let last = projectData[`entry${counter-1}`];
+    console.log('Last entry from GET: ', last);
+    console.log('Last temp from GET: ', last.temp);
+    res.send(last);
+};
 
 
 // POST route
@@ -51,5 +64,8 @@ function addData (req, res) {
     entries.push(newEntry); //add the new entry to the array
     console.log('Added entry: ', newEntry);
     console.log('Array: ', entries);
+    projectData[`entry${counter}`] = newEntry;
+    counter += 1;
+    console.log(projectData);
     res.json({ message: 'Entry received' });
 }

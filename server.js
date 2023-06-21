@@ -1,11 +1,12 @@
-/* Empty JS object to act as endpoint for all routes */
+/* Empty JS object to act as endpoint for all routes; 
+stores entries-objects with properties: date, temperature, feelings */
 let projectData = {};
 
-/* Counts added entries inside projectData object */
+/* Count added entries inside projectData object */
 let counter = 0;
 
 /* Array for storing all of the entries */
-let entries = [];
+//let entries = [];
 
 
 /* Express to run server and routes */
@@ -40,15 +41,14 @@ function listening(){
 
 // GET route
 app.get('/getData', sendData);
+// Send projectData object with all the stored data
 function sendData (req, res) {
     res.send(projectData);
 };
 
 app.get('/getRecent', sendRecent);
+// Send the last added data
 function sendRecent (req, res) {
-    //let last = `entry${counter}`;
-    //let last = 'entry'+(counter-1);
-    //console.log('Get request - last entry: ', projectData.last.temp);
     let last = projectData[`entry${counter-1}`];
     console.log('Last entry from GET: ', last);
     console.log('Last temp from GET: ', last.temp);
@@ -61,11 +61,11 @@ app.post('/addData', addData);
 function addData (req, res) {
     let { date, temp, content } = req.body;
     let newEntry = { date, temp, content };
-    entries.push(newEntry); //add the new entry to the array
+    //entries.push(newEntry); //add the new entry to the array
     console.log('Added entry: ', newEntry);
-    console.log('Array: ', entries);
+    //console.log('Array: ', entries);
     projectData[`entry${counter}`] = newEntry;
     counter += 1;
-    console.log(projectData);
+    console.log('projectData: ', projectData);
     res.json({ message: 'Entry received' });
 }

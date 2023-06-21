@@ -10,7 +10,8 @@
 /* Global Variables */
 
 // Personal API Key for OpenWeatherMap API
-const apiKey = '<c4118ac8f4fdbfee310a33ce3167101b>&units=imperial';
+const apiKey = 'c4118ac8f4fdbfee310a33ce3167101b&units=metric';
+// c4118ac8f4fdbfee310a33ce3167101b&units=metric
 
 let zip;
 let temp;
@@ -47,7 +48,7 @@ function checkZipInput() {
         zip = zipInput;
         return true;
     }
-}
+};
 
 // Check if the feelings input is not empty
 function checkFeelingsInput() {
@@ -61,10 +62,9 @@ function checkFeelingsInput() {
         content = feelInput;
         return true;
     }
-}
+};
 
-
-
+// client-side POST method to add entry
 const postData = async ( url = '/addData', data = {})=>{
     const response = await fetch(url, {
     method: 'POST',
@@ -80,107 +80,99 @@ const postData = async ( url = '/addData', data = {})=>{
         console.log('Response data:', newData);
         return newData;
     } catch(error) {
-        console.log('Error 1 - post data', error);
+        console.log('Error - post data ', error);
         // appropriately handle the error
     }
+};
+
+// GET function to display all entries from projectData object
+async function displayEntries() {
+    fetch('/getData')
+    .then (response => response.json())
+    .then(data => console.log('getData: ', data))
+    .catch('Error - get all data')
 }
 
-// Automatically generate the most recent entry when the page is loaded,
-// or update most recent entry after new one is added by user
-function mostRecentEntry() {
-    //fetch('/getData')
+
+
+
+
+
+
+// Automatically generate most recent entry when the page is loaded
+function generateMostRecentEntry() {
     fetch('/getRecent')
     .then (response => response.json())
     .then(data => {
-        //let lastEntry = data.entry1;
         let lastEntry = data;
-        console.log('Last entry: ', lastEntry);
         let dateRecent = lastEntry.date;
-        console.log('Date-recent: ', dateRecent);
         let tempRecent  = lastEntry.temp;
-        console.log('Temp-recent: ', tempRecent);
         let feelRecent = lastEntry.content;
-        console.log('Feelings-recent: ', feelRecent);
+
+        //console.log('Last entry: ', lastEntry);
+        //console.log('Date-recent: ', dateRecent);
+        //console.log('Temp-recent: ', tempRecent);
+        //console.log('Feelings-recent: ', feelRecent);
+
         let divRecent = 
             `<div id="date">Date: ${dateRecent}</div> 
             <div id="temp">Temperature: ${tempRecent} C</div>
             <div id="content">Feelings: ${feelRecent}</div>`;
         let holder = document.getElementById('entryHolder');
         holder.innerHTML = divRecent;
+        updateEntryClass(tempRecent);   // adjust color for temeprature levels
     })
+};
 
-    /*let lastEntry = projectData[1];
-    console.log('Last entry: ', lastEntry);
-    let dateRecent = lastEntry.date;
-    console.log('Date-recent: ', dateRecent);
-    //let tempRecent 
-    let divRecent = 
-    `<div id="date">Date: ${dateRecent}</div> `;
-    let holder = document.getElementById('entryHolder');
-    holder.innerHTML = divRecent;
-    */
-}
-
+// Update div using most recent entry when new one is added by user
 function updateMostRecentEntry() {
     let divRecent = 
-    `<div id="date">Date: ${newDate}</div> 
-    <div id="temp">Temperature: ${temp} C</div>
-    <div id="content">Feelings: ${content}</div>`;
+            `<div id="date">Date: ${newDate}</div> 
+            <div id="temp">Temperature: ${temp} C</div>
+            <div id="content">Feelings: ${content}</div>`;
+        let holder = document.getElementById('entryHolder');
+        holder.innerHTML = divRecent;
+};
 
-    let holder = document.getElementById('entryHolder');
-    holder.innerHTML = divRecent;
-}
+// Add a class to div containter depending on the temperature level
+// to adjust colors in css styles
+function updateEntryClass(temp) {
+    cont = document.getElementById('entry-container');
+    if (temp > 29) {
+        //console.log('hot');
+        cont.className = "hot";
+    } else if (temp > 21) {
+        //console.log('warm');
+        cont.className = "warm";
+    } else if (temp > 14) {
+        //console.log('mild');
+        cont.className = "mild";
+    }
+    //element1.className = "newClass"; //erases previous
+};
+
 
 
 async function getTemp(url) {
     try {
         const response = await fetch(url);
 
-        /*var data = await response.json();
-        tempByZip = data.main.temp.toFixed(1);
-        console.log("data obtained: ", tempByZip);
-        temp = tempByZip;
-        generateEntry();
-        */
         if (!response.ok) {
-            throw new Error('Error 3: ', response.status);
+            throw new Error('Error 3 while getting temperature: ', response.status);
         }
         var data = await response.json();
         temp = data.main.temp.toFixed(1);
         console.log('data obtained: ', temp);
         generateEntry();
+        updateEntryClass(temp);
         return temp;
     } catch (error) {
         console.log('Error 4: ', error);
     }
-}
-
-
-
-//Add listener for 'Generate' button
-function addListenerForButton() {
-    let btn = document.getElementById('generate');
-    btn.addEventListener('click', function() {
-        let myPromise1 = new Promise(function(myResolve, myReject) {
-            if (checkZipInput() && checkFeelingsInput()) {
-                let urlWeather = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},es&appid=c4118ac8f4fdbfee310a33ce3167101b&units=metric`;
-                getTemp(urlWeather);
-                //generateEntry();
-                /*const promise = getTemp(urlWeather);
-                promise.then((temp) => console.log('Obtained by promise: ', temp))
-                .then((temp) => generateEntry(temp))
-                .catch((error) => {
-                    console.log('Error 5: ', error);
-                }); */
-                received = true;
-            } else {
-                console.log("Error 2 - wrong input");
-            }
-            /*.then(postData('/addData', {date: newDate, temp: 27, content: content}));
-            .catch(console.log('Error3'));*/
-        })
-    });
 };
+
+
+
 
 
 function generateEntry() {
@@ -193,17 +185,12 @@ function generateEntry() {
     postData('/addData', {date: newDate, temp: temp, content: content});
     updateMostRecentEntry();
     return true;
-}
+};
 
 
 
 
 
-
-
-// Call Function
-//postData('/addData', {date: newDate, temp: 27, content: content});
-//postData('/addData', {date: newDate, temp: 18, content: 'A bit colder'});
 
 /*let myPromise2 = new Promise(function(myResolve, myReject) {
     if (received) {
@@ -218,9 +205,7 @@ function generateEntry() {
 
 /* Main functions */
 
-
-
-/* Call functions */
+// Add initial data
 function addEntries() {
     return new Promise((resolve, reject) => {
         postData('/addData', {date: newDate, temp: '27', content: 'Feeling good'});
@@ -228,22 +213,48 @@ function addEntries() {
         let added = true;
         resolve(added);
     });
-}
-
-const promise2 = addEntries();
-promise2.then((added) => {
-    console.log('Data added');
-    return added;
-})
-.then((added) => mostRecentEntry())
-.catch((error) => {
-    console.log('Error 6: ', error);
-});
-
-
-// Fill div with most recent entry
-//mostRecentEntry();
+};
 
 // After clicking the button: 
 //read user input, check temperature, add entry, update most recent entry
+function addListenerForButton() {
+    let btn = document.getElementById('generate');
+    btn.addEventListener('click', function() {
+        let myPromise1 = new Promise(function(myResolve, myReject) {
+            if (checkZipInput() && checkFeelingsInput()) {
+                let urlWeather = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},es&appid=${apiKey}`;
+                getTemp(urlWeather);
+                //generateEntry();
+                /*const promise = getTemp(urlWeather);
+                promise.then((temp) => console.log('Obtained by promise: ', temp))
+                .then((temp) => generateEntry(temp))
+                .catch((error) => {
+                    console.log('Error 5: ', error);
+                }); */
+                received = true;
+            } else {
+                console.log("Error 2 - wrong input submitted");
+            }
+            /*.then(postData('/addData', {date: newDate, temp: 27, content: content}));
+            .catch(console.log('Error3'));*/
+        })
+    });
+};
+
+
+
+/* Call functions */
+
+// Add initial data and generate most recent entry
+const promiseInitial = addEntries();
+promiseInitial.then((added) => {
+    console.log('Initial data added successfully');
+    generateMostRecentEntry(); // update HTML with most recent entry
+    return added;
+})
+.catch((error) => {
+    console.log('Error - initial promise: ', error);
+});
+
+// Add listener for 'Generate' button
 addListenerForButton();

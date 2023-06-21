@@ -50,7 +50,7 @@ body {
     }
 }
 
-.input-container {
+#input-container {
     grid-area: 1/1/1/1;
     display: grid;
     grid-auto-rows: minmax(100px, auto);
@@ -61,12 +61,12 @@ body {
     /*max-width: 450px;*/
 }
 
-.entry-container {
+#entry-container {
     grid-area: 2/1/2/1;
 }
 
 @media(min-width:890px) {
-    .entry-container {
+    #entry-container {
         grid-area: 1/2/1/2;
     }
 }
@@ -88,7 +88,8 @@ h1 {
 }
 
 .entry {
-    background: rgba(59, 74, 107, .4);
+    /*background: rgb(22, 43, 87);*/
+    background-color: #033A49;
     /*min-height: 150px;*/
     /*min-width: 500px;*/
     height: 250px;
@@ -222,4 +223,19 @@ footer {
     color: #e8f2f7;
     line-height: 1.1em;
     text-align: center;
+}
+
+
+
+/* Add different colors for different temperature values */
+.hot {
+    color: #f13d31;
+}
+
+.warm {
+    color: #f08c3a;
+}
+
+.mild {
+    color: #f0d43a;
 }

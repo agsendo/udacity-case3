@@ -1,14 +1,41 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    /*background-color: #fbfbe9;*/
+    
+    /*background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(255,224,43,1) 0%, rgba(0,212,255,1) 100%);*/
+    
+    /* good blue gradient
+    background: rgb(107,238,255);
+    background: radial-gradient(circle, rgba(107,238,255,0.7903536414565826) 50%, rgba(107,188,255,1) 100%);
+    */
+    
+    background-image: url(images/AdobeStock_239372057.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /*background: rgb(255,254,137);
+    background: radial-gradient(circle, rgba(255,254,137,1) 21%, rgba(255,107,139,1) 100%);
+    */
+    font-family: 'Oswald', sans-serif;
+    margin-top: 30px;
+}
+
 body {
     /*background-color: #f23557; red*/
     /*background-color: #157f1f;*/
     /*background-color: #fdfcdc; light yellow*/
     /*background-color: #fed9b7;*/
-    background-color: #fbfbe9;
-    font-family: 'Oswald', sans-serif;
     /*display: grid;
     grid-template-columns: (15vw, auto, 15vw);*/
-    margin: 0;
-    padding: 0;
     /*height: 100%;*/
     position: relative;
     min-height: 100vh;
@@ -28,12 +55,13 @@ body {
     /*background-color: #157f1f; dark green !!!!!!*/
     /*background-color: #fdfcdc; light yellow*/
     /*background-color: #fed9b7;*/
-    background-color: #fbfbe9;
+
     /*background-color: #07560f;*/
     /*background-color: #8ae093; light green*/
     /*color: #f0d43a; yellow !!!!*/
     /*color: #f07167; red/pink*/
     color: #EC7A71;
+    /*background-color: #fbfbe9;*/
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     padding-bottom: 50px;
@@ -45,6 +73,7 @@ body {
         grid-template-columns: (50%, 50%);
         grid-gap: 1em;
         justify-items: center;
+        place-items: center;
         margin-left: 5%;
         margin-right: 5%;
     }
@@ -56,6 +85,7 @@ body {
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 1em;
     justify-items: center;
+    place-items: center;
     /*display: flex;
     flex-direction: column;*/
     /*max-width: 450px;*/
@@ -63,6 +93,15 @@ body {
 
 #entry-container {
     grid-area: 2/1/2/1;
+    /*background-image: url(images/sky-main.jpeg);*/
+    background-image: url(images/AdobeStock_109660124.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 200px;
+    max-height: 500px;
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 
 @media(min-width:890px) {
@@ -89,12 +128,16 @@ h1 {
 
 .entry {
     /*background: rgb(22, 43, 87);*/
-    background-color: #033A49;
     /*min-height: 150px;*/
     /*min-width: 500px;*/
-    height: 250px;
-    width: 300px;
     margin-bottom: 50px;
+    background-color: #033a49a3;
+    margin: 12px;
+    padding: 12px;
+}
+
+.entry span {
+    font-weight: 600;
 }
 
 #entryHolder {
@@ -120,6 +163,10 @@ h1 {
     /*border-bottom: 4px #f0d43a solid;*/
     border-bottom: 4px #f07167 solid;
     text-align: center;
+    /*background-image: url(images/AdobeStock_135590143.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
 }
 
 @media(min-width:601px) {
@@ -152,6 +199,8 @@ input {
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
+    border-radius: 8px;
+    padding: 5px;
 }
 
 textarea {
@@ -164,6 +213,10 @@ textarea {
     width: 400px;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
 }
 
 input:valid, textarea:valid {
@@ -184,6 +237,7 @@ button {
     border: none;
     box-shadow: 2px 4px 5px #444;
     margin-bottom: 50px;
+    cursor: pointer;
 }
 
 /* Reset style for HTML element on active to have no border*/
@@ -198,19 +252,19 @@ button:focus {
 ::placeholder { /* Firefox, Chrome, Opera */ 
     color: #f0d43a; 
     font-family: 'Oswald', sans-serif;
-
+    margin-left: 5px;
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
     color: #f0d43a; 
     font-family: 'Oswald', sans-serif;
-
+    margin-left: 5px;
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
     color: #f0d43a; 
     font-family: 'Oswald', sans-serif;
-
+    margin-left: 5px;
 }
 
 footer {
@@ -221,7 +275,7 @@ footer {
     /*background-color: #3b4a6b;*/
     background-color: #033A49;;
     color: #e8f2f7;
-    line-height: 1.1em;
+    line-height: 3em;
     text-align: center;
 }
 
@@ -238,4 +292,16 @@ footer {
 
 .mild {
     color: #f0d43a;
+}
+
+.cool {
+
+}
+
+.cold {
+
+}
+
+.freezing {
+    
 }

@@ -29,7 +29,7 @@ app.use(cors());
 /* Initialize the main project folder*/
 app.use(express.static('website'));
 
-const port = 8000;
+const port = 3000;
 /* Spin up the server*/
 const server = app.listen(port, listening);
 function listening(){
@@ -61,7 +61,7 @@ app.post('/addData', addData);
 function addData (req, res) {
     let { date, temp, content } = req.body;
     let newEntry = { date, temp, content };
-    //entries.push(newEntry); //add the new entry to the array
+    //entries.push(newEntry); //add the new entry to the array - use projectData instead
     console.log('Added entry: ', newEntry);
     //console.log('Array: ', entries);
     projectData[`entry${counter}`] = newEntry;

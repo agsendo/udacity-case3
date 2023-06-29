@@ -5,9 +5,6 @@ let projectData = {};
 /* Count added entries inside projectData object */
 let counter = 0;
 
-/* Array for storing all of the entries */
-//let entries = [];
-
 
 /* Express to run server and routes */
 const express = require('express');
@@ -57,13 +54,12 @@ function sendRecent (req, res) {
 
 
 // POST route
-app.post('/addData', addData);
+app.post('/postData', addData);
 function addData (req, res) {
     let { date, temp, content } = req.body;
     let newEntry = { date, temp, content };
-    //entries.push(newEntry); //add the new entry to the array - use projectData instead
+    
     console.log('Added entry: ', newEntry);
-    //console.log('Array: ', entries);
     projectData[`entry${counter}`] = newEntry;
     counter += 1;
     console.log('projectData: ', projectData);

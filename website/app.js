@@ -7,18 +7,16 @@
 
 
 
-/* Global Variables */
+/*
+* Global Variables
+*/
 
 // Personal API Key for OpenWeatherMap API
 const apiKey = 'c4118ac8f4fdbfee310a33ce3167101b&units=metric';
-// c4118ac8f4fdbfee310a33ce3167101b&units=metric
 
 let zip;
 let temp;
 let content;
-
-let tempByZip;
-let received = false;
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -27,26 +25,31 @@ let newDate = d.getDate()+'.'+(d.getMonth()+1)+'.'+ d.getFullYear();
 
 
 
-/* Helper functions */
+/*
+* Helper functions
+*/
 
 // Check if the ZIP code is not empty, and mathes the pattern (5 digits)
 // for Spanish 5-digits ZIP code: two first digits between 01 and 52
 function checkZipInput() {
-    //var zipInput = document.getElementById('zip').value;
-    var zipInput = document.forms["submitEntry"]["zipCode"].value;
-    if (zipInput == "" || document.forms["submitEntry"]["zipCode"].validity.patternMismatch) {
+    let zipInput = document.getElementById('zip'); // element with ID "zip"
+    let zipInputVal = zipInput.value; // value from user
+    //var zipInput = document.forms["submitEntry"]["zipCode"].value;
+    if (zipInputVal == "" || zipInput.validity.patternMismatch) {
         alert("Please enter correct ZIP code (5 digits)");
         console.log('Wrong ZIP code input');
         return false;
-    } else if (!((/^[0-4]$/.test(zipInput.charAt(0))) 
-    || (/^[5]$/.test(zipInput.charAt(0)) && /^[0-2]$/.test(zipInput.charAt(1))) 
-    || (/^[0]$/.test(zipInput.charAt(0)) && /^[0]$/.test(zipInput.charAt(1))))) {
+    } else if (!(
+    (/^[0-4]$/.test(zipInputVal.charAt(0))) 
+    || (/^[5]$/.test(zipInputVal.charAt(0)) && /^[0-2]$/.test(zipInputVal.charAt(1))) 
+    || (/^[0]$/.test(zipInputVal.charAt(0)) && /^[0]$/.test(zipInputVal.charAt(1)))
+    )) {
         alert("Spanish ZIP code should start with numbers between 01-52");
         console.log('Wrong Spanish ZIP code');
         return false;
     } else {
         console.log('ZIP correct');
-        zip = zipInput;
+        zip = zipInputVal;
         return true;
     };
 };
@@ -66,7 +69,7 @@ function checkFeelingsInput() {
 };
 
 // client-side POST method to add entry
-async function postData (url = '/addData', data = {}) {
+async function postData (url = '/postData', data = {}) {
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -165,37 +168,48 @@ async function getTemp (url) {
         // - stored in global variable temp
         temp = data.main.temp.toFixed(1);
         console.log('Temp obtained: ', temp);
-        //return temp;
+
+        //temp = JSON.parse(temp);
+        //console.log('Temp json: ', temp);
+        return temp;
     } catch (error) {
         console.log('Error while obtaining temperature: ', error);
     };
 };
 
+
+
+/*
+* Main functions
+*/
+
+// Check user input, then use Promises to fetch temperature, post data to server and update HTML for recent entry
 function generateNewEntry() {
     if (checkZipInput() && checkFeelingsInput()) {
         let urlWeather = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},es&appid=${apiKey}`;
         getTemp(urlWeather)
-        .then(postData('/addData', {date: newDate, temp: temp, content: content}))
-        .then(updateMostRecentEntry())
+        .then(function(temp) {
+            console.log('Temp in .then: ', temp);
+            postData('/postData', {date: newDate, temp: temp, content: content});
+        })
+        .then(function() {
+            updateMostRecentEntry()
+        })
         .catch((error) => {
             console.log('Error while generating new entry', error)
         }); 
-        updateEntryClass(temp);
+        //updateEntryClass(temp);
     } else {
         console.log('Error - wrong input submitted');
     };
 };
 
-
-
-/* Main functions */
-
 // Add initial data
 function addEntries() {
     return new Promise((resolve, reject) => {
-        postData('/addData', {date: newDate, temp: 27, content: 'Feeling good'});
-        postData('/addData', {date: newDate, temp: 18, content: 'A bit colder'});
-        postData('/addData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city and was listening to music, so it was a nice time.'});
+        postData('/postData', {date: newDate, temp: 27, content: 'Feeling good'});
+        postData('/postData', {date: newDate, temp: 18, content: 'A bit colder'});
+        postData('/postData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city and was listening to music, so it was a nice time.'});
         let added = true;
         resolve(added);
     });
@@ -212,7 +226,9 @@ function addListenerForButton() {
 
 
 
-/* Call functions */
+/*
+* Call functions
+*/
 
 // Add initial data and generate most recent entry
 const promiseInitial = addEntries();

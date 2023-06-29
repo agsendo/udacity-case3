@@ -47,8 +47,6 @@ app.get('/getRecent', sendRecent);
 // Send the last added data
 function sendRecent (req, res) {
     let last = projectData[`entry${counter-1}`];
-    console.log('Last entry from GET: ', last);
-    console.log('Last temp from GET: ', last.temp);
     res.send(last);
 };
 
@@ -58,10 +56,7 @@ app.post('/postData', addData);
 function addData (req, res) {
     let { date, temp, content } = req.body;
     let newEntry = { date, temp, content };
-    
-    console.log('Added entry: ', newEntry);
     projectData[`entry${counter}`] = newEntry;
     counter += 1;
-    console.log('projectData: ', projectData);
     res.json({ message: 'Entry received' });
 }

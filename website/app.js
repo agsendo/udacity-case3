@@ -89,20 +89,7 @@ async function postData (url = '/postData', data = {}) {
     };
 };
 
-// GET function to display all entries from projectData object
-/*const getEntries = async () => {
-    const request = await fetch('/getData');
-    try {
-        const data = await request.json();
-        console.log('getData: ', data);
-    } catch (error) {
-        console.log('Error while getting all data', error);
-    };
-};
-*/
-
-// Update HTML element with most recent entry
-// when the page is loaded or when new entry is added
+// Update HTML element with most recent entry (when the page is loaded or new entry is added)
 // using GET method to access most recent entry
 async function updateMostRecentEntry() {
     const request = await fetch('/getRecent');
@@ -113,19 +100,6 @@ async function updateMostRecentEntry() {
         let tempRecent = lastEntry.temp;
         let feelRecent = lastEntry.content;
 
-        //console.log('Last entry: ', lastEntry);
-        //console.log('Date-recent: ', dateRecent);
-        //console.log('Temp-recent: ', tempRecent);
-        //console.log('Feelings-recent: ', feelRecent);
-
-        /* Update whole div container of last entry
-        let divRecent = 
-            `<div id="date">Date: ${dateRecent}</div> 
-            <div id="temp">Temperature: ${tempRecent} C</div>
-            <div id="content">Feelings: ${feelRecent}</div>`;
-        let holder = document.getElementById('entryHolder');
-        holder.innerHTML = divRecent;
-        */
         // Update divs with given IDs
         document.getElementById('date').innerHTML = `<span>Date:</span> ${dateRecent}`;
         document.getElementById('temp').innerHTML = `<span>Temperature:</span> ${tempRecent} C`;
@@ -143,7 +117,6 @@ async function updateMostRecentEntry() {
 // to adjust colors in css styles
 function updateEntryClass(t) {
     cont = document.getElementById('entry-container');
-    //element1.className = "newClass"; //erases previous
     if (t > 29) {
         cont.className = "hot";
     } else if (t > 21) {
@@ -168,9 +141,6 @@ async function getTemp (url) {
         // - stored in global variable temp
         temp = data.main.temp.toFixed(1);
         console.log('Temp obtained: ', temp);
-
-        //temp = JSON.parse(temp);
-        //console.log('Temp json: ', temp);
         return temp;
     } catch (error) {
         console.log('Error while obtaining temperature: ', error);

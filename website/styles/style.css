@@ -21,19 +21,21 @@ html {
     /*background: rgb(2,0,36);
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(255,224,43,1) 0%, rgba(0,212,255,1) 100%);*/
     
-    /* good blue gradient
+    /* blue gradient, ok but light
     background: rgb(107,238,255);
     background: radial-gradient(circle, rgba(107,238,255,0.7903536414565826) 50%, rgba(107,188,255,1) 100%);
     */
     
+    /* good with cloud illustration*/
     background-image: url(../images/AdobeStock_239372057.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 
 
-    /*background: rgb(255,254,137);
-    background: radial-gradient(circle, rgba(255,254,137,1) 21%, rgba(255,107,139,1) 100%);
-    */
+    /* yellow orange gradient, nope
+    background: rgb(255,254,137);
+    background: radial-gradient(circle, rgba(255,254,137,1) 21%, rgba(255,107,139,1) 100%);*/
+    
 }
 
 

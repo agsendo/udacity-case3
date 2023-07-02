@@ -42,13 +42,13 @@
 #app {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    flex-wrap: wrap;
     /*gap: 40px;*/
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    margin-top: 30px;
+    /*font-family: 'Oswald', sans-serif;*/
+    padding-top: 30px;
     padding-bottom: 50px;
-    width: auto;
+    /*width: 100%;*/
 }

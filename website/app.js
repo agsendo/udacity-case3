@@ -89,6 +89,19 @@ async function postData (url = '/postData', data = {}) {
     };
 };
 
+// GET function to display all entries from projectData object
+// -> use getRecent instead
+/*const getEntries = async () => {
+    const request = await fetch('/getData');
+    try {
+        const data = await request.json();
+        console.log('getData: ', data);
+    } catch (error) {
+        console.log('Error while getting all data', error);
+    };
+};
+*/
+
 // Update HTML element with most recent entry (when the page is loaded or new entry is added)
 // using GET method to access most recent entry
 async function updateMostRecentEntry() {
@@ -140,7 +153,6 @@ async function getTemp (url) {
         // Get temperature from received data and round it to 1 decimal place
         // - stored in global variable temp
         temp = data.main.temp.toFixed(1);
-        console.log('Temp obtained: ', temp);
         return temp;
     } catch (error) {
         console.log('Error while obtaining temperature: ', error);
@@ -159,7 +171,6 @@ function generateNewEntry() {
         let urlWeather = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},es&appid=${apiKey}`;
         getTemp(urlWeather)
         .then(function(temp) {
-            console.log('Temp in .then: ', temp);
             postData('/postData', {date: newDate, temp: temp, content: content});
         })
         .then(function() {
@@ -167,19 +178,18 @@ function generateNewEntry() {
         })
         .catch((error) => {
             console.log('Error while generating new entry', error)
-        }); 
-        //updateEntryClass(temp);
+        });
     } else {
         console.log('Error - wrong input submitted');
     };
 };
 
-// Add initial data
+// Add exemplary initial data
 function addEntries() {
     return new Promise((resolve, reject) => {
         postData('/postData', {date: newDate, temp: 27, content: 'Feeling good'});
         postData('/postData', {date: newDate, temp: 18, content: 'A bit colder'});
-        postData('/postData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city and was listening to music, so it was a nice time.'});
+        postData('/postData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city, it was a nice time.'});
         let added = true;
         resolve(added);
     });

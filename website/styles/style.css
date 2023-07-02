@@ -1,0 +1,111 @@
+@import 'app.css';
+@import 'input-container.css';
+@import 'entry-container.css';
+@import 'footer.css';
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+html {
+    font-family: 'Oswald', sans-serif;
+    
+
+    /*background-color: #fbfbe9;*/
+    
+    /*background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(255,224,43,1) 0%, rgba(0,212,255,1) 100%);*/
+    
+    /* good blue gradient
+    background: rgb(107,238,255);
+    background: radial-gradient(circle, rgba(107,238,255,0.7903536414565826) 50%, rgba(107,188,255,1) 100%);
+    */
+    
+    background-image: url(../images/AdobeStock_239372057.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    /*background: rgb(255,254,137);
+    background: radial-gradient(circle, rgba(255,254,137,1) 21%, rgba(255,107,139,1) 100%);
+    */
+}
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.header {
+    /*font-size: 2em;*/
+    height: 60px;
+    margin-top: 5px;
+    /*padding-top: 5px;*/
+    
+    /*border-bottom: 4px #f0d43a solid;*/
+    border-bottom: 4px #f07167 solid;
+    text-align: center;
+    /*background-image: url(images/AdobeStock_135590143.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;*/
+}
+
+@media(min-width:601px) {
+    .header {
+        height: 90px;
+    }
+}
+
+
+h1 {
+    font-size: 2em;
+    /*color: #f0d43a;*/
+    color: #f13d31;
+}
+
+@media(min-width:601px) {
+    h1 {
+        font-size: 3em;
+    }
+}
+
+
+
+
+
+
+
+.holder {
+
+}
+
+
+
+#entryHolder {
+
+}
+
+#date {
+
+}
+
+#temp {
+
+}
+
+#content {
+
+}
+
+
+
+.title {
+
+}

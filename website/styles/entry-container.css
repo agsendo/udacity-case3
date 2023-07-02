@@ -1,0 +1,74 @@
+#entry-container {
+    /*grid-area: 2/1/2/1;*/
+    /*background-image: url(images/sky-main.jpeg);*/
+    background-image: url(../images/AdobeStock_109660124.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 150px;
+    max-height: 500px;
+    min-width: 300px;
+    max-width: 400px;
+    /*margin-bottom: 30px;*/
+
+    /*margin: 3%;*/
+    /*margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;*/
+    margin: 30px;
+    /*margin-bottom: 70px;
+    margin-top: -50px;*/
+    margin-top: 50px;
+}
+
+/*
+@media(min-width:890px) {
+    #entry-container {
+        grid-area: 1/2/1/2;
+    }
+}*/
+
+
+#entry-container h3 {
+}
+
+
+.entry {
+    /*background: rgb(22, 43, 87);*/
+    /*min-height: 150px;*/
+    /*min-width: 500px;*/
+    background-color: #033a49a3;
+    margin: 12px;
+    /*margin-bottom: 50px;*/
+    padding: 12px;
+}
+
+.entry span {
+    font-weight: 600;
+}
+
+
+
+/* Add different colors for different temperature values */
+.hot {
+    color: #f13d31;
+}
+
+.warm {
+    color: #f08c3a;
+}
+
+.mild {
+    color: #f0d43a;
+}
+
+.cool {
+
+}
+
+.cold {
+
+}
+
+.freezing {
+    
+}

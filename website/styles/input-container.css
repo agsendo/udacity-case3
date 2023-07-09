@@ -32,7 +32,7 @@
 label {
     display: block;
     font-size: 27px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 input {
@@ -44,8 +44,15 @@ input {
     background-color: #105C71; dark blue*/
     /*background-color: #047190; dark blue - good*/
     /*background-color: #047290cd; dark blue !!!!*/
-    background-color: #0081a7;
-    color: #f0d43a;
+    
+    
+    /*background-color: #0081a7;*/
+    /*background-color: #823329;*/
+    background-color: #B8C5E5;
+    /*color: #f0d43a; yellow*/
+    /*color: #BD5E42; brownish*/
+    /*color: #B59442; goldish*/
+    color: #033A49;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
@@ -58,8 +65,16 @@ textarea {
     background-color: #105C71; dark blue*/
     /*background-color: #047190; dark blue - good*/
     /*background-color: #047290cd; dark blue !!!!*/
-    background-color: #0081a7;
-    color: #f0d43a;
+    
+    
+    /*background-color: #0081a7; ok blue dark*/
+    /*background-color: #823329; brownish*/
+    background-color: #B8C5E5;
+    
+    /*color: #f0d43a; yellow*/
+    /*color: #BD5E42; brownish*/
+    /*color: #B59442; goldish*/
+    color: #033A49;
     /*width: 400px;*/
     width: 300px;
     font-size: 20px;
@@ -73,7 +88,14 @@ textarea {
 
 input:valid, textarea:valid {
     /*background-color: #2caacdcd; !!!!*/
-    background-color: #00afb9;
+    /*background-color: #00afb9;*/
+    /*background-color: #93A7D7; monochromatic*/
+    
+    /*background-color: #BCBBDB; !!! good*/
+    /*background-color: #bbd0db;*/
+    /*background-color: #bbc1db; ok, very small contrast*/
+    /*background-color: #bbcedb; ok, small contrast*/
+    background-color: #bbd1db;
 }
 
 button {
@@ -82,7 +104,9 @@ button {
     border-radius: 35px;
     display: block;
     /*background-color: #3b4a6b;*/
-    background-color: #033A49;
+    /*background-color: #033A49; ok dark*/
+    /*background-color: #067695; lighter dark blue*/
+    background-color: #033a49a3;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
@@ -107,6 +131,7 @@ button {
 }
 
 
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
@@ -117,19 +142,22 @@ button:focus {
 
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    /*color: #f0d43a;  yellow*/
+    color: #033A49;
     font-family: 'Oswald', sans-serif;
     margin-left: 5px;
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    /*color: #f0d43a;  yellow*/
+    color: #033A49;
     font-family: 'Oswald', sans-serif;
     margin-left: 5px;
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    /*color: #f0d43a;  yellow*/
+    color: #033A49;
     font-family: 'Oswald', sans-serif;
     margin-left: 5px;
 }

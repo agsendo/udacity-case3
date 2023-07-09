@@ -82,7 +82,7 @@ async function postData (url = '/postData', data = {}) {
     try {
         const newData = await response.json();
         console.log('Response data:', newData);
-        return newData;
+        //return newData;
     } catch(error) {
         console.log('Error - post data: ', error);
         // appropriately handle the error
@@ -185,15 +185,29 @@ function generateNewEntry() {
 };
 
 // Add exemplary initial data
-function addEntries() {
+/*function addEntries() {
     return new Promise((resolve, reject) => {
         postData('/postData', {date: newDate, temp: 27, content: 'Feeling good'});
         postData('/postData', {date: newDate, temp: 18, content: 'A bit colder'});
         postData('/postData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city, it was a nice time.'});
         let added = true;
         resolve(added);
+        reject(new Error('Error while adding initial data'));
     });
-};
+};*/
+
+async function initialEntries() {
+    try {
+        await postData('/postData', {date: newDate, temp: 27, content: 'Feeling good'});
+        await postData('/postData', {date: newDate, temp: 18, content: 'A bit colder'});
+        await postData('/postData', {date: newDate, temp: 24, content: 'I am having really good day, it is warm and sunny. I went for a long walk aroud the city, it was a nice time.'});
+        let added = true;
+        console.log('Initial data added successfully - ', added);
+        updateMostRecentEntry();
+    } catch (error) {
+        console.log('Error while obtaining temperature: ', error);
+    };
+}
 
 // After clicking the button: 
 //read user input, check temperature, add entry, update HTML most recent entry
@@ -211,15 +225,18 @@ function addListenerForButton() {
 */
 
 // Add initial data and generate most recent entry
-const promiseInitial = addEntries();
+/*const promiseInitial = addEntries();
 promiseInitial.then((added) => {
-    console.log('Initial data added successfully');
+    console.log('Initial data added successfully - ', added);
     updateMostRecentEntry(); // update HTML with most recent entry
-    return added;
+    //return added;
 })
 .catch((error) => {
     console.log('Error - initial promise: ', error);
-});
+});*/
+
+// Add initial data and generate most recent entry
+initialEntries();
 
 // Add listener for 'Generate' button
 addListenerForButton();

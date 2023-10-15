@@ -1,31 +1,13 @@
 #input-container {
-    /*min-width: 300px;
-    max-width: 500px;*/
-    
-    /*width: 300px; ok*/
-    /*grid-area: 1/1/1/1;*/
     display: grid;
     grid-auto-rows: minmax(100px, auto);
-    /*grid-gap: 3em;*/
     row-gap: 40px;
     justify-items: center;
     place-items: center;
-    /*display: flex;
-    flex-direction: column;*/
-    /*max-width: 450px;*/
-
-    /*margin: 3%;*/
     margin-left: 30px;
     margin-right: 30px;
     max-width: 500px;
 }
-
-/*@media(min-width:600px) {
-    #input-container {
-        width: 500px;
-    }
-}*/
-
 
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -33,92 +15,55 @@ label {
     display: block;
     font-size: 27px;
     margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 input {
     display: block;
     height: 60px;
-    /*width: 400px;*/
     width: 300px;
-    /*background: #22b2da; blue
-    background-color: #105C71; dark blue*/
-    /*background-color: #047190; dark blue - good*/
-    /*background-color: #047290cd; dark blue !!!!*/
-    
-    
-    /*background-color: #0081a7;*/
-    /*background-color: #823329;*/
     background-color: #B8C5E5;
-    /*color: #f0d43a; yellow*/
-    /*color: #BD5E42; brownish*/
-    /*color: #B59442; goldish*/
     color: #033A49;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
     border: none;
     border-radius: 8px;
-    padding: 5px;
+    padding: 8px;
+    font-family: 'Oswald', sans-serif;
 }
 
 textarea {
-    /*background-color: #22b2da; blue
-    background-color: #105C71; dark blue*/
-    /*background-color: #047190; dark blue - good*/
-    /*background-color: #047290cd; dark blue !!!!*/
-    
-    
-    /*background-color: #0081a7; ok blue dark*/
-    /*background-color: #823329; brownish*/
     background-color: #B8C5E5;
-    
-    /*color: #f0d43a; yellow*/
-    /*color: #BD5E42; brownish*/
-    /*color: #B59442; goldish*/
     color: #033A49;
-    /*width: 400px;*/
     width: 300px;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
     border: none;
     border-radius: 8px;
-    padding: 5px;
+    padding: 8px;
+    font-family: 'Oswald', sans-serif;
 }
 
-
-
 input:valid, textarea:valid {
-    /*background-color: #2caacdcd; !!!!*/
-    /*background-color: #00afb9;*/
-    /*background-color: #93A7D7; monochromatic*/
-    
-    /*background-color: #BCBBDB; !!! good*/
-    /*background-color: #bbd0db;*/
-    /*background-color: #bbc1db; ok, very small contrast*/
-    /*background-color: #bbcedb; ok, small contrast*/
     background-color: #bbd1db;
+    font-family: 'Oswald', sans-serif;
 }
 
 button {
     width: 200px;
     height: 80px;
-    border-radius: 35px;
     display: block;
-    /*background-color: #3b4a6b;*/
-    /*background-color: #033A49; ok dark*/
-    /*background-color: #067695; lighter dark blue*/
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
     background-color: #033a49a3;
     color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
     border: none;
+    border-radius: 35px;
     box-shadow: 2px 4px 5px #444;
-    margin-bottom: 50px;
     cursor: pointer;
-
     position: relative;
-    /*left: 25%;*/
     left: 50px;
     margin-top: 15px;
+    margin-bottom: 50px;
 }
 
 @media(min-width:480px) {

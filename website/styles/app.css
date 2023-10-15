@@ -1,54 +1,10 @@
-/*#app {
-    margin-top: 30px;
-    display: grid;
-    grid-template-rows: (auto, auto);
-    grid-gap: 2em;
-    justify-items: center;
-    /*display: flex;
-    flex-direction: row;*/
-    /*grid-area: 2/1/2/1;*/
-    /*min-height: 100%;*/    
-    /*background-color: #f23557; red*/
-    /*background-color: #157f1f; dark green !!!!!!*/
-    /*background-color: #fdfcdc; light yellow*/
-    /*background-color: #fed9b7;*/
-
-    /*background-color: #07560f;*/
-    /*background-color: #8ae093; light green*/
-    /*color: #f0d43a; yellow !!!!*/
-    /*color: #f07167; red/pink*/
-    /*color: #EC7A71; good */
-    /*background-color: #fbfbe9;*/
-    /*font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    padding-bottom: 50px;
-}
-*/
-
-/*
-@media(min-width:890px) {
-    #app {
-        display: grid;
-        grid-template-columns: (50%, 50%);
-        grid-gap: 1em;
-        justify-items: center;
-        place-items: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-}*/
-
-
 #app {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    /*gap: 40px;*/
     font-size: 20px;
-    /*font-family: 'Oswald', sans-serif;*/
     padding-top: 30px;
     padding-bottom: 50px;
-    /*width: 100%;*/
 }

@@ -1,87 +1,61 @@
 #entry-container {
-    /*grid-area: 2/1/2/1;*/
-    /*background-image: url(images/sky-main.jpeg);*/
     background-image: url(../images/AdobeStock_109660124.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 150px;
     max-height: 550px;
-    /*min-width: 300px;
-    max-width: 400px;*/
     width: 400px;
-    /*margin-bottom: 30px;*/
-
-    /*margin: 3%;*/
-    /*margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;*/
-    margin: 30px;
-    /*margin-bottom: 70px;
-    margin-top: -50px;*/
+    /*margin: 30px;*/
     margin-top: 55px;
-
+    margin-bottom: 70px;
     border-radius: 15px;
 }
 
-/*
-@media(min-width:890px) {
-    #entry-container {
-        grid-area: 1/2/1/2;
-    }
-}*/
-
-
 #entry-container h3 {
     text-align: center;
-    color: black;
+    /*color: #bbd1db;
+    text-shadow: 0 0 6px rgb(33, 37, 46);*/
+    color: rgb(33, 37, 46);
+    text-shadow: 0 0 8px #bbd1db;
     margin-bottom: 20px;
 }
 
-
 .entry {
-    /*background: rgb(22, 43, 87);*/
-    /*min-height: 150px;*/
-    /*min-width: 500px;*/
     background-color: #033a49a3;
-    margin: 12px;
-    /*margin-bottom: 50px;*/
-
-    /*padding: 12px;*/
-    padding: 20px;
-
+    margin: 14px;
+    padding: 24px;
+    padding-bottom: 30px;
     border-radius: 15px;
 }
 
 .entry span {
-    font-weight: 600;
-    color: black;
+    font-weight: 700;
+    text-shadow: 0 0 6px rgb(33, 37, 46);
 }
 
 
 
 /* Add different colors for different temperature values */
 .hot {
-    /*color: #f13d31;*/
-    color: #bf190d;
+    color: #ff5101;
 }
 
 .warm {
-    color: #f08c3a;
+    color: #ff9a00;
 }
 
 .mild {
-    /*color: #f0d43a;*/
-    color: #f4df67;
+    color: #ffe86b;
 }
 
 .cool {
-
+    color: #a6f6ff;
 }
 
 .cold {
-
+    color: #04e5ff;
 }
 
 .freezing {
-    
+    color: #00a9ff;
 }
